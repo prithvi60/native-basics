@@ -1,12 +1,12 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, Pressable } from "react-native";
 
 import styles from "./nearbyjobcard.style";
-import { checkImageURL } from "../../../../utils";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
-const NearbyJobCard = ({ job, handleNavigate }) => {
+const NearbyJobCard = ({ title, companyType, location, handleNavigate }) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={handleNavigate}>
-      <TouchableOpacity style={styles.logoContainer}>
+    <Pressable style={styles.container} onPress={handleNavigate}>
+      {/* <Pressable style={styles.logoContainer}>
         <Image
           source={{
             uri: checkImageURL(job.employer_logo)
@@ -16,16 +16,51 @@ const NearbyJobCard = ({ job, handleNavigate }) => {
           resizeMode='contain'
           style={styles.logImage}
         />
-      </TouchableOpacity>
+      </Pressable> */}
 
       <View style={styles.textContainer}>
-        <Text style={styles.jobName} numberOfLines={1}>
-          {job?.job_title}
-        </Text>
-
-        <Text style={styles.jobType}>{job?.job_employment_type}</Text>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "10px",
+            marginBottom: "20px",
+          }}
+        >
+          <Text style={styles.jobName} numberOfLines={1}>
+            {title}
+          </Text>
+          <Text style={{ padding: "3px", backgroundColor: "#FDFD23" }}>
+            New
+          </Text>
+        </View>
+        <View style={{}}>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <FontAwesome name="building" style={{ fontSize: "20px" }} />
+            <Text style={styles.jobType}>{companyType}</Text>
+          </View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <FontAwesome name="compass" style={{ fontSize: "20px" }} />
+            <Text style={styles.jobLocation}>{location}</Text>
+          </View>
+        </View>
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

@@ -8,6 +8,7 @@ const COLORS = {
 
   white: "#F3F4F8",
   lightWhite: "#FAFAFC",
+  linearGradient :"#00FF83"
 };
 
 const FONT = {
@@ -37,14 +38,14 @@ const SHADOWS = {
     elevation: 2,
   },
   medium: {
-    shadowColor: "#000",
+    shadowColor: "#00000",
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 2,
     },
-    shadowOpacity: 0.25,
+    shadowOpacity: 0.28,
     shadowRadius: 5.84,
-    elevation: 5,
+    elevation: 7,
   },
 };
 

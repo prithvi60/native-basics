@@ -1,5 +1,5 @@
-import { Stack, useRouter, useSearchParams } from "expo-router";
-import { useCallback, useState } from "react";
+import { Stack, useGlobalSearchParams, useRouter } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -19,54 +19,70 @@ import {
 } from "../../components";
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
+import {
+  ScreenHeaderBtn2,
+  ScreenHeaderBtnBack,
+} from "../../components/common/header/ScreenHeaderBtn";
+import About from "../../components/jobdetails/about/About";
+import { LatestJob } from "../../constants/data";
 
-const tabs = ["About", "Qualifications", "Responsibilities"];
+// const tabs = ["About", "Qualifications", "Responsibilities"];
 
 const JobDetails = () => {
-  const params = useSearchParams();
+  const params = useGlobalSearchParams();
   const router = useRouter();
+  const [data, setData] = useState("");
+  // console.log(params.id.replace(/-/g, " "));
 
-  const { data, isLoading, error, refetch } = useFetch("job-details", {
-    job_id: params.id,
-  });
-
-  const [activeTab, setActiveTab] = useState(tabs[0]);
-  const [refreshing, setRefreshing] = useState(false);
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
-    refetch()
-    setRefreshing(false)
+  useEffect(() => {
+    LatestJob.filter((job) =>
+      job.title === params.id.replace(/-/g, " ")
+        ? setData(job)
+        : "Something Went Wrong"
+    );
   }, []);
+  // console.log(data);
 
+  // const { data, isLoading, error, refetch } = useFetch("job-details", {
+  //   job_id: params.id,
+  // });
 
-  const displayTabContent = () => {
-    switch (activeTab) {
-      case "Qualifications":
-        return (
-          <Specifics
-            title='Qualifications'
-            points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
-          />
-        );
+  // const [activeTab, setActiveTab] = useState(tabs[0]);
+  // const [refreshing, setRefreshing] = useState(false);
 
-      case "About":
-        return (
-          <JobAbout info={data[0].job_description ?? "No data provided"} />
-        );
+  // const onRefresh = useCallback(() => {
+  //   setRefreshing(true);
+  //   refetch()
+  //   setRefreshing(false)
+  // }, []);
 
-      case "Responsibilities":
-        return (
-          <Specifics
-            title='Responsibilities'
-            points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
-          />
-        );
+  // const displayTabContent = () => {
+  //   switch (activeTab) {
+  //     case "Qualifications":
+  //       return (
+  //         <Specifics
+  //           title='Qualifications'
+  //           points={data[0].job_highlights?.Qualifications ?? ["N/A"]}
+  //         />
+  //       );
 
-      default:
-        return null;
-    }
-  };
+  //     case "About":
+  //       return (
+  //         <JobAbout info={data[0].job_description ?? "No data provided"} />
+  //       );
+
+  //     case "Responsibilities":
+  //       return (
+  //         <Specifics
+  //           title='Responsibilities'
+  //           points={data[0].job_highlights?.Responsibilities ?? ["N/A"]}
+  //         />
+  //       );
+
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
@@ -76,21 +92,18 @@ const JobDetails = () => {
           headerShadowVisible: false,
           headerBackVisible: false,
           headerLeft: () => (
-            <ScreenHeaderBtn
-              iconUrl={icons.left}
-              dimension='60%'
-              handlePress={() => router.back()}
+            <ScreenHeaderBtnBack
+              iconName={"<"}
+              handlePress={() => router.push("/home")}
             />
           ),
-          headerRight: () => (
-            <ScreenHeaderBtn iconUrl={icons.share} dimension='60%' />
-          ),
+          headerRight: () => <ScreenHeaderBtn2 iconName={"bars"} />,
           headerTitle: "",
         }}
       />
 
       <>
-        <ScrollView showsVerticalScrollIndicator={false}
+        {/* <ScrollView showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
         >
@@ -118,9 +131,12 @@ const JobDetails = () => {
               {displayTabContent()}
             </View>
           )}
+        </ScrollView> */}
+        <ScrollView showsVerticalScrollIndicator={false}>
+          {data.length == 0 ? <Text>No Data Found</Text> : <About job={data} />}
+          {/* <Text>hELLO</Text> */}
         </ScrollView>
-
-        <JobFooter url={data[0]?.job_google_link ?? 'https://careers.google.com/jobs/results/'} />
+        <JobFooter url={"https://careers.google.com/jobs/"} />
       </>
     </SafeAreaView>
   );

@@ -5,6 +5,8 @@ import { FONT, SIZES, COLORS } from "../../../constants";
 const styles = StyleSheet.create({
   container: {
     marginTop: SIZES.xLarge,
+    paddingLeft:"35px",
+    paddingRight:"35px"
   },
   header: {
     flexDirection: "row",

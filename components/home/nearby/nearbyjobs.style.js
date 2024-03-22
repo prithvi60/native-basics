@@ -4,7 +4,11 @@ import { COLORS, FONT, SIZES } from "../../../constants";
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: SIZES.xLarge,
+    paddingTop: SIZES.xLarge,
+    paddingLeft:"35px",
+    paddingRight:"35px",
+    backgroundColor: "#F8F8F8",
+    marginBottom: 20
   },
   header: {
     flexDirection: "row",

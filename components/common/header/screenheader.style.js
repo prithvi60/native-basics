@@ -1,21 +1,30 @@
 import { StyleSheet } from "react-native";
-
-import { COLORS, SIZES } from "../../../constants";
+import { FONT } from "../../../constants";
 
 const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    // flex: 1,
+    flexDirection : "row",
+    alignItems: "center",
+    paddingLeft: "30px",
+    gap : 15
+    // paddingRight: "30px",
+  },
   btnContainer: {
     width: 40,
     height: 40,
-    backgroundColor: COLORS.white,
-    borderRadius: SIZES.small / 1.25,
     justifyContent: "center",
     alignItems: "center",
+    paddingLeft: "30px",
+    paddingRight: "30px",
   },
-  btnImg: (dimension) => ({
-    width: dimension,
-    height: dimension,
-    borderRadius: SIZES.small / 1.25,
-  }),
+  btnImg: {
+    fontSize: "28px",
+    fontFamily: FONT.bold,
+    marginTop: 3,
+    paddingLeft : 4
+  },
 });
 
 export default styles;

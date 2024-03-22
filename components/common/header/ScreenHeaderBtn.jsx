@@ -1,17 +1,47 @@
-import { Image, TouchableOpacity } from "react-native";
+import { Text, Pressable, View } from "react-native";
 
 import styles from "./screenheader.style";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { FONT } from "../../../constants";
 
-const ScreenHeaderBtn = ({ iconUrl, dimension, handlePress }) => {
+// const ScreenHeaderBtn = ({ iconUrl,handlePress }) => {
+//   return (
+//     <Pressable style={styles.btnContainer} onPress={handlePress}>
+//       <Image
+//         source={iconUrl}
+//         resizeMode='cover'
+//         style={styles.btnImg}
+//       />
+//     </Pressable>
+//   );
+// };
+
+const ScreenHeaderBtn = ({ iconName, handlePress, title }) => {
   return (
-    <TouchableOpacity style={styles.btnContainer} onPress={handlePress}>
-      <Image
-        source={iconUrl}
-        resizeMode='cover'
-        style={styles.btnImg(dimension)}
-      />
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <Text style={{ fontSize: "20px", fontFamily: FONT.bold }}>{title}</Text>
+      <Pressable style={styles.btnContainer} onPress={handlePress}>
+        <FontAwesome name={iconName} style={styles.btnImg} />
+      </Pressable>
+    </View>
   );
 };
 
 export default ScreenHeaderBtn;
+
+export const ScreenHeaderBtn2 = ({ iconName, handlePress }) => {
+  return (
+    <Pressable style={styles.btnContainer} onPress={handlePress}>
+      <FontAwesome name={iconName} style={styles.btnImg} />
+    </Pressable>
+  );
+};
+
+export const ScreenHeaderBtnBack = ({ iconName, handlePress }) => {
+  return (
+    <Pressable style={styles.btnContainer} onPress={handlePress}>
+      {/* <FontAwesome name={}  /> */}
+      <Text style={styles.btnImg}>{iconName}</Text>
+    </Pressable>
+  );
+};
