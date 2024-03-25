@@ -93,11 +93,11 @@ const JobDetails = () => {
           headerBackVisible: false,
           headerLeft: () => (
             <ScreenHeaderBtnBack
-              iconName={"<"}
+              // iconName={"<"}
               handlePress={() => router.push("/home")}
             />
           ),
-          headerRight: () => <ScreenHeaderBtn2 iconName={"bars"} />,
+          // headerRight: () => <ScreenHeaderBtn2 iconName={"bars"} />,
           headerTitle: "",
         }}
       />

@@ -37,11 +37,11 @@ export const ScreenHeaderBtn2 = ({ iconName, handlePress }) => {
   );
 };
 
-export const ScreenHeaderBtnBack = ({ iconName, handlePress }) => {
+export const ScreenHeaderBtnBack = ({ handlePress }) => {
   return (
     <Pressable style={styles.btnContainer} onPress={handlePress}>
-      {/* <FontAwesome name={}  /> */}
-      <Text style={styles.btnImg}>{iconName}</Text>
+      <FontAwesome name={"arrow-left"} size={20}  />
+      {/* <Text style={styles.btnImg}>{iconName}</Text> */}
     </Pressable>
   );
 };

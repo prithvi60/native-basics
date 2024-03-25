@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flexDirection : "row",
     alignItems: "center",
     paddingLeft: "30px",
-    gap : 15
+    // gap : 15
     // paddingRight: "30px",
   },
   btnContainer: {

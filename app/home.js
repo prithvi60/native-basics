@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SafeAreaView, ScrollView, View } from "react-native";
 import { Stack, useRouter } from "expo-router";
 
-import { COLORS} from "../constants";
+import { COLORS } from "../constants";
 import {
   Nearbyjobs,
   // Popularjobs,
@@ -25,18 +25,18 @@ const Home = () => {
         // style={styles.button}
       > */}
       <Stack.Screen
-          options={{
-            headerStyle: { backgroundColor: COLORS.linearGradient},
-            headerShadowVisible: false,
-            // contentStyle:{padding : "0px 10px"},
+        options={{
+          headerStyle: { backgroundColor: COLORS.linearGradient },
+          headerShadowVisible: false,
+          // contentStyle:{padding : "0px 10px"},
 
-            headerLeft: () => (
-              <ScreenHeaderBtn iconName={"tree"} title={"JobTree"} />
-            ),
-            headerRight: () => <ScreenHeaderBtn2 iconName={"bars"} />,
-            headerTitle: "",
-          }}
-        />
+          headerLeft: () => (
+            <ScreenHeaderBtn iconName={"tree"} title={"JobTree"} />
+          ),
+          // headerRight: () => <ScreenHeaderBtn2 iconName={"bars"} />,
+          headerTitle: "",
+        }}
+      />
       {/* <View
         style={{
           backgroundColor: COLORS.linearGradient,

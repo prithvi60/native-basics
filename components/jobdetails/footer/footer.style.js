@@ -26,8 +26,10 @@ const styles = StyleSheet.create({
     borderRadius: 15
   },
   likeBtnImage: {
-    width: "40%",
-    height: "40%",
+    // width: "40%",
+    // height: "40%",
+    fontSize: 20,
+    color:"#DC143C",
     tintColor: "#FFFFFF",
   },
   applyBtn: {
@@ -41,7 +43,7 @@ const styles = StyleSheet.create({
   },
   applyBtnText: {
     fontSize: SIZES.medium,
-    color: COLORS.white,
+    // color: "",
     fontFamily: FONT.bold,
   },
 });
