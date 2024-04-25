@@ -24,7 +24,7 @@ const NearbyJobCard = ({ title, companyType, location, handleNavigate }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            gap: "10px",
+            gap: 10,
             marginBottom: "20px",
           }}
         >
@@ -41,7 +41,7 @@ const NearbyJobCard = ({ title, companyType, location, handleNavigate }) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              gap: "10px",
+              gap: 10,
             }}
           >
             <FontAwesome name="building" style={{ fontSize: "20px" }} />
@@ -52,7 +52,7 @@ const NearbyJobCard = ({ title, companyType, location, handleNavigate }) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              gap: "10px",
+              gap: 10,
             }}
           >
             <FontAwesome name="compass" style={{ fontSize: "20px" }} />

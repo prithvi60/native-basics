@@ -2,6 +2,13 @@ import { StyleSheet } from "react-native";
 import { COLORS, FONT, SIZES,SHADOWS } from "../../../constants";
 
 const styles = StyleSheet.create({
+
+  loadingText:{
+    flex: 1,
+    width: "100%",
+    justifyContent: "center",
+    fontSize: 16
+  },
   container: {
     flex: 1,
     justifyContent: "space-between",

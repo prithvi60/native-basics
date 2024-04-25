@@ -62,7 +62,7 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
             backgroundColor: COLORS.white,
             paddingTop: "5px",
             paddingBottom: "5px",
-            borderRadius: "10px",
+            borderRadius: 10,
             height: 50,
             width: "100%",
           }}

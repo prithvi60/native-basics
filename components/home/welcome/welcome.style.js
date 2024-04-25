@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: "15px",
+    gap: 15,
     paddingLeft:"35px",
     paddingRight:"35px"
   },

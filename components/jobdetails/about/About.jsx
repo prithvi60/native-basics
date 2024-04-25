@@ -1,17 +1,46 @@
 import { View, Text } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import styles from "./about.style";
+import { useQuery, gql } from "@apollo/client";
+import { useEffect, useState } from "react";
 
-const About = ({ job }) => {
-  console.log(job.jobDesc);
+// query for specific job
+const GetJob = gql`
+  query GetSpecificJob($id: ID!) {
+    getJob(ID: $id) {
+      title
+      location
+      jobDesc
+      img
+      companyType
+    }
+  }
+`;
+
+const About = ({ id }) => {
+  // console.log("id", id);
+  // const [job, setJob] = useState();
+  const { loading, error, data } = useQuery(GetJob, {
+    variables: {
+      id,
+    },
+    // onCompleted: (queryData) => {
+    //   setJob(queryData.getJob);
+    //   console.log("data fetched", queryData.getJob);
+    // },
+  });
+
+  if (loading)
+    return (
+      <View style={styles.container}>
+        <Text style={styles.loadingText}>Loading...</Text>;
+      </View>
+    );
+  if (error) return `Error : ${error.message}`;
+
+  const job = data.getJob;
+
   return (
-    // <View style={styles.container}>
-    //   <Text style={styles.headText}>About the job:</Text>
-
-    //   <View style={styles.contentBox}>
-    //     <Text style={styles.contextText}>{info}</Text>
-    //   </View>
-    // </View>
     <View style={styles.container}>
       <View style={styles.textContainer}>
         <View
@@ -19,7 +48,7 @@ const About = ({ job }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            gap: "10px",
+            gap:10,
             // marginBottom: "20px",
           }}
         >
@@ -36,7 +65,7 @@ const About = ({ job }) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              gap: "10px",
+              gap: 10,
               marginBottom: 7,
             }}
           >
@@ -48,7 +77,7 @@ const About = ({ job }) => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
-              gap: "10px",
+              gap: 10,
             }}
           >
             <FontAwesome name="compass" style={{ fontSize: "15px" }} />
@@ -59,10 +88,15 @@ const About = ({ job }) => {
           <Text style={styles.jobName}>Job Description</Text>
           {job.jobDesc.map((list, id) => (
             <View
-            key={id}
-              style={{ display: "flex", flexDirection:"row", alignItems: "center", gap: "5px" }}
+              key={id}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 5,
+              }}
             >
-              <FontAwesome name="circle" style={{fontSize: "8px"}} />
+              <FontAwesome name="circle" style={{ fontSize: "8px" }} />
               <Text key={id} style={styles.list}>
                 {list}
               </Text>

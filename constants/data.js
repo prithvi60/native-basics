@@ -12,6 +12,7 @@ export const LatestJob = [
       "Prepare test case, conduct the unit test and system test.",
       "Communicate with IT PM and user about solution and development progress",
     ],
+    img: "https://ik.imagekit.io/webibee/Agency/euro%20logo.png?updatedAt=1709192477504",
   },
   {
     title: "Junior Frontend Engineer",

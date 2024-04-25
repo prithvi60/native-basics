@@ -1,19 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "expo-router";
 import { View, Text, Pressable, ActivityIndicator } from "react-native";
 
 import styles from "./nearbyjobs.style";
 import NearbyJobCard from "../../common/cards/nearby/NearbyJobCard";
-import useFetch from "../../../hook/useFetch";
+// import useFetch from "../../../hook/useFetch";
 import { LatestJob } from "../../../constants/data";
+import { useQuery, gql } from "@apollo/client";
 
+const GetAllNearByJobs = gql`
+  query GetAllJobs {
+    getAllJobs {
+      title
+      location
+      companyType
+      id
+    }
+  }
+`;
 
 const Nearbyjobs = () => {
   const router = useRouter();
-  // const { data, isLoading, error } = useFetch("search", {
-  //   query: "React Native developer",
-  //   num_pages: "1",
-  // });
+  const [jobs, setJobs] = useState([]);
+  const { loading, error } = useQuery(GetAllNearByJobs, {
+    onCompleted: (queryData) => {
+      setJobs(queryData.getAllJobs);
+    },
+  });
+  // console.log(jobs);
+  if (loading) return null;
+  if (error) return `Error : ${error}`;
 
   return (
     <View style={styles.container}>
@@ -25,15 +41,18 @@ const Nearbyjobs = () => {
       </View>
 
       <View style={styles.cardsContainer}>
-        {LatestJob.map((job,idx)=>(
-        <NearbyJobCard
-          title={job.title}
-          location={job.location}
-          companyType={job.companyType}
-          key={idx}
-          // handleNavigate={""}
-          handleNavigate={() => router.push(`/job-details/${job.title.replace(/\s/g, "-")}`)}
-        />
+        {jobs.map((job) => (
+          <NearbyJobCard
+            title={job.title}
+            location={job.location}
+            companyType={job.companyType}
+            key={job.id}
+            // handleNavigate={""}
+            handleNavigate={() =>
+              // router.push(`/job-details/${job.title.replace(/\s/g, "-")}`)
+              router.push(`/job-details/${job.id}`)
+            }
+          />
         ))}
       </View>
 
