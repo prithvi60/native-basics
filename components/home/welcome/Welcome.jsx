@@ -36,24 +36,6 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
           </Text>
         </View>
 
-        {/* <View style={styles.searchContainer}>
-          <View style={styles.searchWrapper}>
-            <TextInput
-              style={styles.searchInput}
-              value={searchTerm}
-              onChangeText={(text) => setSearchTerm(text)}
-              placeholder="What are you looking for?"
-            />
-          </View>
-          <Pressable style={styles.searchBtn} onPress={handleClick}>
-            <Image
-              source={icons.search}
-              resizeMode="contain"
-              style={styles.searchBtnImage}
-            />
-          </Pressable>
-        </View> */}
-
         <View
           style={{
             display: "flex",
@@ -76,7 +58,6 @@ const Welcome = ({ searchTerm, setSearchTerm, handleClick }) => {
           <Pressable style={styles.searchBtn} onPress={handleClick}>
             <Image
               source={icons.search}
-              resizeMode="contain"
               style={styles.searchBtnImage}
             />
           </Pressable>

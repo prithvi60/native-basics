@@ -49,6 +49,12 @@ const styles = StyleSheet.create({
     color: COLORS.gray,
     marginTop: 3,
     textTransform: "capitalize",
+  },
+  image:{
+    width : 30,
+    height: 30,
+    borderRadius : 25,
+    // resizeMode: "contain",
   }
 });
 

@@ -1,8 +1,7 @@
-import { View, Text } from "react-native";
+import { View, Text,Image } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import styles from "./about.style";
 import { useQuery, gql } from "@apollo/client";
-import { useEffect, useState } from "react";
 
 // query for specific job
 const GetJob = gql`
@@ -18,23 +17,17 @@ const GetJob = gql`
 `;
 
 const About = ({ id }) => {
-  // console.log("id", id);
-  // const [job, setJob] = useState();
   const { loading, error, data } = useQuery(GetJob, {
     variables: {
       id,
     },
-    // onCompleted: (queryData) => {
-    //   setJob(queryData.getJob);
-    //   console.log("data fetched", queryData.getJob);
-    // },
   });
 
   if (loading)
     return (
-      <View style={styles.container}>
-        <Text style={styles.loadingText}>Loading...</Text>;
-      </View>
+      // <View style={styles.container}>
+        <Text style={styles.loadingText}>Loading...</Text>
+      // </View>
     );
   if (error) return `Error : ${error.message}`;
 
@@ -55,11 +48,15 @@ const About = ({ id }) => {
           <Text style={styles.jobName} numberOfLines={1}>
             {job.title}
           </Text>
-          <Text style={{ padding: "3px", backgroundColor: "#FDFD23" }}>
+          {/* <Text style={{ padding: "3px", backgroundColor: "#FDFD23" }}>
             New
-          </Text>
+          </Text> */}
+          <Image
+            source={{ uri: job.img }}
+            style={styles.image}
+          />
         </View>
-        <View style={{}}>
+        <View>
           <View
             style={{
               display: "flex",

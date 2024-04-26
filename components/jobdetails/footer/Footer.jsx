@@ -7,11 +7,6 @@ const Footer = ({ url }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.likeBtn}>
-        {/* <Image
-          source={icons.heartOutline}
-          resizeMode='contain'
-          style={styles.likeBtnImage}
-        /> */}
         <FontAwesome name="heart" style={styles.likeBtnImage} />
       </Pressable>
 

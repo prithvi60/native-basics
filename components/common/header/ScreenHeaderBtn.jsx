@@ -4,18 +4,6 @@ import styles from "./screenheader.style";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { FONT } from "../../../constants";
 
-// const ScreenHeaderBtn = ({ iconUrl,handlePress }) => {
-//   return (
-//     <Pressable style={styles.btnContainer} onPress={handlePress}>
-//       <Image
-//         source={iconUrl}
-//         resizeMode='cover'
-//         style={styles.btnImg}
-//       />
-//     </Pressable>
-//   );
-// };
-
 const ScreenHeaderBtn = ({ iconName, handlePress, title }) => {
   return (
     <View style={styles.container}>

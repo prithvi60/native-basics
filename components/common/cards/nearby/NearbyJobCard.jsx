@@ -1,23 +1,18 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Image } from "react-native";
 
 import styles from "./nearbyjobcard.style";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import imgData from "../../../../assets/images/kemal.jpg";
 
-const NearbyJobCard = ({ title, companyType, location, handleNavigate }) => {
+const NearbyJobCard = ({
+  title,
+  companyType,
+  location,
+  handleNavigate,
+  src,
+}) => {
   return (
     <Pressable style={styles.container} onPress={handleNavigate}>
-      {/* <Pressable style={styles.logoContainer}>
-        <Image
-          source={{
-            uri: checkImageURL(job.employer_logo)
-              ? job.employer_logo
-              : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
-          }}
-          resizeMode='contain'
-          style={styles.logImage}
-        />
-      </Pressable> */}
-
       <View style={styles.textContainer}>
         <View
           style={{
@@ -31,11 +26,15 @@ const NearbyJobCard = ({ title, companyType, location, handleNavigate }) => {
           <Text style={styles.jobName} numberOfLines={1}>
             {title}
           </Text>
-          <Text style={{ padding: "3px", backgroundColor: "#FDFD23" }}>
+          {/* <Text style={{ padding: "3px", backgroundColor: "#FDFD23" }}>
             New
-          </Text>
+          </Text> */}
+          <Image
+            source={{ uri: src }}
+            style={styles.image}
+          />
         </View>
-        <View style={{}}>
+        <View>
           <View
             style={{
               display: "flex",

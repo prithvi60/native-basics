@@ -1,13 +1,12 @@
 import { StyleSheet } from "react-native";
-import { COLORS, FONT, SIZES,SHADOWS } from "../../../constants";
+import { COLORS, FONT, SIZES, SHADOWS } from "../../../constants";
 
 const styles = StyleSheet.create({
-
-  loadingText:{
+  loadingText: {
     flex: 1,
     width: "100%",
     justifyContent: "center",
-    fontSize: 16
+    fontSize: 16,
   },
   container: {
     flex: 1,
@@ -23,13 +22,12 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     marginHorizontal: SIZES.medium,
-    rowGap: 25
+    rowGap: 25,
   },
   jobName: {
     fontSize: SIZES.medium,
     color: "black",
     fontFamily: FONT.bold,
-   
   },
   jobType: {
     fontSize: SIZES.medium + 2,
@@ -45,12 +43,18 @@ const styles = StyleSheet.create({
     // marginTop: 3,
     textTransform: "capitalize",
   },
-  list : {
+  list: {
     fontFamily: FONT.medium,
-    fontSize : 14,
-    marginStart:12,
-    marginTop: 10
-  }
+    fontSize: 14,
+    marginStart: 12,
+    marginTop: 10,
+  },
+  image: {
+    width: 30,
+    height: 30,
+    borderRadius: 25,
+    // resizeMode: "contain",
+  },
   // container: {
   //   marginTop: SIZES.large,
   //   backgroundColor: "#FFF",

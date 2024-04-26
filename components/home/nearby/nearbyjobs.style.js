@@ -5,10 +5,23 @@ import { COLORS, FONT, SIZES } from "../../../constants";
 const styles = StyleSheet.create({
   container: {
     paddingTop: SIZES.xLarge,
-    paddingLeft:"35px",
-    paddingRight:"35px",
+    paddingLeft: "35px",
+    paddingRight: "35px",
     backgroundColor: "#F8F8F8",
-    marginBottom: 20
+    marginBottom: 20,
+  },
+  loadingText: {
+    // flex: 1,
+    width: "100%",
+    height: "100vh",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: 16,
+    paddingTop: SIZES.xLarge,
+    paddingLeft: "35px",
+    paddingRight: "35px",
+    backgroundColor: "#F8F8F8",
+    marginBottom: 20,
   },
   header: {
     flexDirection: "row",
